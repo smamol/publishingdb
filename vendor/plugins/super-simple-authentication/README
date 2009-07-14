@@ -1,0 +1,54 @@
+SuperSimpleAuthentication
+=========================
+
+Super Simple Authentication allows you to easily password protect controllers and actions. 
+
+Installation
+------------
+First, install the plugin:
+
+    script/plugin install http://svn.ariejan.net/plugins/super_simple_authentication
+
+When the plugin is installed, you may generate your SSA controller. This controller verifies your
+password and makes sure you stay authenticated for the duration of your visit. 
+
+    script/generate super_simple_authentication sessions
+
+Your password is located in config/super_simple_authentication.yml. Change it.
+
+In the SessionsController, you'll find an include statement. Move this include to your application controller. 
+
+The generator automatically added routes to your config/routes.rb file. If you want easy access to 
+login and logout functionality, add these two lines to your config/routes.rb file as well:
+
+    map.login  '/login',  :controller => 'sessions', :action => 'new'
+    map.logout '/logout', :controller => 'sessions', :action => 'destroy', :method => :delete
+
+Usage
+-----
+
+You can now protect you actions and controllers with a before_filter:
+
+    # Protect all actions in the controller
+    before_filter :authorization_required
+    
+    # Protect all actions, except :index and :recent
+    before_filter :authorization_required, :except => [:index, :recent]
+    
+    # Protect only :destroy
+    before_filter :authorization_required, :only => :destroy
+
+In your views, you can check if you are authorized or not with authorized? E.g.
+
+    <% if authorized? %>
+        # ... do secret admin stuff
+    <% end %>
+
+Please visit http://trac.ariejan.net to report bugs. Ariejan.net (http://ariejan.net) will keep 
+you updated on new major version. (Please subscribe to RSS: http://feeds.feedburner.com/Ariejan)
+
+Credits
+-------
+
+Kabisa ICT - http://kabisa.nl
+Ariejan.net - http://ariejan.net

@@ -1,0 +1,13 @@
+Description:
+    This will generate the necessary files for super simple authentication. 
+
+    Your password is located in config/super_simple_authentication.yml
+
+Example:
+    ./script/generate super_simple_authentication sessions
+
+    This will create:
+        app/controllers/sessions_controller.rb
+        app/views/sessions/new.rhtml
+        config/super_simple_authentication.yml
+        lib/super_simple_authentication_system.yml
