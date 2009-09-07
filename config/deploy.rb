@@ -16,3 +16,19 @@ role :web, domain
 role :db,  domain, :primary => true
 
 
+# ========================
+#    For Mongrel Apps
+# ========================
+
+ namespace :deploy do
+
+   task :copy_database_configuration
+	      production_db_config = "home/sandyte/script/database.yml"
+				     run "cp #{production_db_config}" "{release_path}/config/database.yml"
+   end
+
+   after "deploy:update_code", "deploy:copy_database_configuration"
+
+ end
+
+
