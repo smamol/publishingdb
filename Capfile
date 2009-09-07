@@ -14,7 +14,7 @@ load 'config/deploy'
 
    task :copy_database_configuration do
 	      production_db_config = "/home/sandyte/script/database.yml"
-        run "cp #{production_db_config}" "/home/sandyte/apps/publishingdb/current/config/database.yml"
+        run "cp #{production_db_config} "   " /home/sandyte/apps/publishingdb/current/config/database.yml"
    end
 
    task :start, :roles => :app do
