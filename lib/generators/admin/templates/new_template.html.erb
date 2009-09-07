@@ -1,0 +1,16 @@
+<h1>Create a New <%= class_name %></h1>
+<%%= render(:partial => "_includes/notice") %>
+<%%= render(:partial => "_includes/navadmin") %>
+<%% form_for(@<%= class_name.downcase %>) do |f| %>
+  <%%= f.error_messages %>
+  <fieldset>
+    <legend><%= class_name %> details</legend>
+    <div>
+      <%%= f.label :name %>
+      <%%= f.text_field :name %>
+    </div>
+    <div>
+      <%%= f.submit "Create" %>
+    </div>
+  </fieldset>
+<%% end %>

@@ -1,0 +1,118 @@
+
+
+table.jCalendar {
+	border: 1px solid #123f4d;
+	background: #2889a7;border-spacing: 2px;
+}
+table.jCalendar th {
+	background: #2889a7;color: #fff;font-weight: bold;
+	padding: 3px 5px;
+}
+
+table.jCalendar td {
+	background: #dae3e5; color: #123f4d;
+	padding: 3px 5px;
+	text-align: center;
+}
+table.jCalendar td.otherMonth {background: #ddd;color: #2889a7;}
+
+table.jCalendar td.today {background: #1c5e73;color: #fff;}
+
+table.jCalendar td.selected {background: #862C37;color: #fff;}
+
+table.jCalendar td.selected:hover {
+	background: #eea11f;
+	color: #fff;
+}
+table.jCalendar td:hover, table.jCalendar td.dpHover {
+	background: #fff;
+	color: #123f4d;
+}
+table.jCalendar td.disabled, table.jCalendar td.disabled:hover {
+	background: #bbb;
+	color: #888;
+}
+
+/* For the popup */
+
+/* NOTE - you will probably want to style a.dp-choose-date - see how I did it in demo.css */
+
+div.dpPopup {
+	position: relative;
+	background: #98cad9;
+	font-size: 10px;
+	font-family: arial, sans-serif;
+	padding: 2px;
+	width: 171px;
+	line-height: 1.2em;
+}
+div#dpPopup {
+	position: absolute;
+	z-index: 199;
+}
+div.dpPopup h2 {
+	font-size: 12px;
+	text-align: center;
+	margin: 2px 0;
+	padding: 0;
+}
+a#dpClose {
+	font-size: 11px;
+	padding: 4px 0;
+	text-align: center;
+	display: block;
+}
+a#dpClose:hover {
+	text-decoration: underline;
+}
+div.dpPopup a {
+	color: #000;
+	text-decoration: none;
+	padding: 3px 2px 0;
+}
+div.dpPopup div.dpNavPrev {
+	position: absolute;
+	top: 2px;
+	left: 4px;
+	width: 100px;
+}
+div.dpPopup div.dpNavPrev a {
+	float: left;
+}
+/* Opera needs the rules to be this specific otherwise it doesn't change the cursor back to pointer after you have disabled and re-enabled a link */
+div.dpPopup div.dpNavPrev a, div.dpPopup div.dpNavNext a {
+	cursor: pointer;
+}
+div.dpPopup div.dpNavPrev a.disabled, div.dpPopup div.dpNavNext a.disabled {
+	cursor: default;
+}
+div.dpPopup div.dpNavNext {
+	position: absolute;
+	top: 2px;
+	right: 4px;
+	width: 100px;
+}
+div.dpPopup div.dpNavNext a {
+	float: right;
+}
+div.dpPopup a.disabled {
+	cursor: default;
+	color: #aaa;
+}
+div.dpPopup td {
+	cursor: pointer;
+}
+div.dpPopup td.disabled {
+	cursor: default;
+}
+
+input.selectDate {float:left;}
+
+a.dpSelectDate {
+    background:url('imgs/link-calendar.gif') no-repeat 0 0;
+    display:block;
+    width:16px;height:18px;
+    float:left; margin-left:5px;
+}
+a.dpSelectDate:hover {background-position:0 -18px;}
+a.dpSelectDate span {position:absolute;left:-9999em;}

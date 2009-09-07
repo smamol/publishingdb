@@ -1,0 +1,7 @@
+add foreign keys
+create migration script to insert static data
+define relationships in model
+pluralise migration filename
+run migrations
+update _navadmin.html
+admin/index

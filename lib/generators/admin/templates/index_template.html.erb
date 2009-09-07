@@ -1,0 +1,18 @@
+<h1>Manage <%= class_name.pluralize %> </h1>
+<%%= render(:partial => "_includes/notice") %>
+<%%= link_to 'Create a new <%= class_name.downcase %> ', new_<%= class_name.downcase %>_path, :class => 'createNew' %>
+<%%= render(:partial => "_includes/navadmin") %>
+<table cellspacing="0" cellpadding="0" summary="List of <%= class_name.pluralize.downcase %>. ">
+ <tr>
+    <th>Name</th>
+    <th>Actions</th>
+  </tr>
+
+  <%% for <%= class_name.downcase %> in @<%= class_name.pluralize.downcase %>  %>
+    <tr>
+      <td><%%=h <%= class_name.downcase %>.name %></td>
+      <td  class="actions"><%%= link_to 'Edit', edit_<%= class_name.downcase %>_path(<%= class_name.downcase %>) %>
+      <%%= link_to 'Delete', <%= class_name.downcase %> , :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <%% end %> 
+</table>

@@ -1,0 +1,18 @@
+<h1>Manage Specialties </h1>
+<%= render(:partial => "_includes/notice") %>
+<%= link_to 'Create a new specialty ', new_specialty_path, :class => 'createNew' %>
+<%= render(:partial => "_includes/navadmin") %>
+<table cellspacing="0" cellpadding="0" summary="List of specialties. ">
+ <tr>
+    <th>Name</th>
+    <th>Actions</th>
+  </tr>
+
+  <% for specialty in @specialties  %>
+    <tr>
+      <td><%=h specialty.name %></td>
+      <td  class="actions"><%= link_to 'Edit', edit_specialty_path(specialty) %>
+      <%= link_to 'Delete', specialty , :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %> 
+</table>

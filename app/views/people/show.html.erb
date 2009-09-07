@@ -1,0 +1,63 @@
+<h1><%=h @person.first_name_and_last_name %></h1>
+<%= render(:partial => "_includes/notice") %>
+<h2>Person</h2>
+<ul class="detail">
+  <li>
+    <strong> Occupation:</strong>
+     <%= h @person.occupation.name unless @person.occupation.blank?  %>
+  </li>
+  <li>
+    <strong> Email:</strong>
+     <%= mail_to(@person.email) unless @person.email.blank? %>
+  </li>
+  <li>
+    <strong> Mobile phone:</strong>
+     <%=h @person.mobile unless @person.mobile.blank? %>
+  </li>
+  <li>
+    <strong> Phone or skype:</strong>
+     <%=h @person.phone_or_skype unless @person.phone_or_skype.blank? %>
+  </li>
+  <li>
+    <strong> Website:</strong>
+     <%=h @person.website unless @person.website.blank? %>
+  </li>
+  <li>
+    <strong> Notes:</strong>
+    <div class="text"><%=  simple_format(@person.notes) unless @person.notes.blank? %></div>
+  </li>
+</ul>
+<ul class="actions">
+  <li class='createLink'><%= link_to 'Edit person', edit_person_path(@person) %></li>
+</ul>
+<ul class="actions">
+  <li><%= link_to 'Create new person', new_person_path %></li>
+</ul>
+
+
+<h2 class="licensing">Publications</h2>
+<ul class="detail">
+  <% for publishing in @person.publishings %>
+    <li>
+      <% unless publishing.publication.nil? %><a href="#" class="show"><%=h publishing.publication.name %></a><%end %>
+      <ul class="licensorSourcingDetails">     
+      </ul>
+    </li>
+  <% end %>
+</ul>
+
+
+<% unless @person.awards.blank? %>
+  <h2>Awards for contact</h2>
+  <ul class="detail">
+    <% for award in @person.awards %>
+      <li>
+        <%= link_to award.name, award_path(award)  %>
+      </li>
+    <% end %>
+  </ul>
+<%end%>
+
+
+
+

@@ -15,3 +15,9 @@ config.action_controller.perform_caching             = false
 
 # Don't care if the mailer can't send
 config.action_mailer.raise_delivery_errors = false
+
+#Sets the per_page value for pagination
+PER_PAGE = 20
+
+#Change date format for output
+ActiveSupport::CoreExtensions::Date::Conversions::DATE_FORMATS.merge!( :default => '%d/%m/%Y')

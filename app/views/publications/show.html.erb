@@ -1,0 +1,20 @@
+<h1><%=h @publication.name %></h1>
+<%= render(:partial => "_includes/notice") %>
+<h2>Publication</h2>
+<ul class="detail">
+  <li>
+    <strong> Name:</strong>
+     <%= h @publication.name unless @publication.name.blank?  %>
+  </li>
+</ul>
+<ul class="actions">
+  <li class='createLink'><%= link_to 'Edit publication', edit_publication_path(@publication) %></li>
+</ul>
+<ul class="actions">
+  <li><%= link_to 'Create new publication', new_publication_path %></li>
+</ul>
+
+
+
+
+

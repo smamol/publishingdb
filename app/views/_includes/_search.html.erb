@@ -1,0 +1,8 @@
+<% form_tag( {:action=>'search'}, :method => :get, :class => 'search') do %>
+  <div>
+    <%= label_tag('term', label_text) %>
+    <%= text_field_tag('term') %>
+    <%= hidden_field_tag('page',1) %>
+    <%= submit_tag('Find',:name => 'find') %>
+  </div>
+<% end %>

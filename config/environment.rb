@@ -34,8 +34,24 @@ Rails::Initializer.run do |config|
   # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
   # Run "rake -D time" for a list of tasks for finding time zone names.
   config.time_zone = 'UTC'
+  
+  # Your secret key for verifying cookie session data integrity.
+  # If you change this key, all old sessions will become invalid!
+  # Make sure the secret is at least 30 characters and all random, 
+  # no regular words or you'll be exposed to dictionary attacks.
+  config.action_controller.session = {
+    :session_key => '_publishingdb_session',
+    :secret      => '82404183660a5c1e8acd99a1adb2c4686c6adadfb65f996b21babe3b3381ca938c46a02d8103a247f9ced9d45971e8b5c3b31b65f83862fe51005b74b69ae940'
+  }
+  
 
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de
+  
+  
 end
+
+ExceptionNotifier.exception_recipients = %w(sandy.mamoli@gmail.com)
+ExceptionNotifier.sender_address = %("Application Error" <sandy.mamoli@gmail.com>)
+ExceptionNotifier.email_prefix = "[PUBLISHINGDB PROD] "

@@ -1,0 +1,22 @@
+<h1>Edit publication</h1>
+<%= render(:partial => "_includes/notice") %>
+
+<% form_for(@publication) do |f| %>
+  <%= f.error_messages %>
+  <fieldset>
+    <legend>Publication details</legend>
+    <div class="formSection">
+     <div>
+      <%= f.label :name %>
+      <%= f.text_field :name%>
+    </div>
+  </div>
+  </fieldset>
+  
+   <div class="actions">
+      <%= f.submit "Update" %>
+   </div>
+
+<% end %>
+
+

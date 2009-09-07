@@ -1,0 +1,72 @@
+<h1>Create a New Person</h1>
+<%= render(:partial => "_includes/notice") %>
+<% form_for(@person) do |f| %>
+  <%= f.error_messages %>
+  <fieldset>
+    <legend>Person details</legend>
+	<div class="formSection">
+	<div>
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %>
+    </div>
+    <div>
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %>
+    </div>
+    <div>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </div>
+    <div>
+      <%= f.label :mobile %>
+      <%= f.text_field :mobile %>
+    </div>
+	<div>
+		<%= f.label :phone_or_skype %>
+	    <%= f.text_field :phone_or_skype %>
+	</div>
+	<div>
+	    <%= f.label :website %>
+	    <%= f.text_field :website %>
+	</div>
+	</div>
+	
+	<div class="formSection">
+	    <div>
+	      <%= f.label "Occupation" %>
+	      <%= collection_select(:person, :occupation_id, @occupations, :id, :name, :include_blank => true) %>
+	 	</div>
+		<div>
+	      <%= f.label :notes %>
+	      <%= f.text_area :notes, :cols => 40, :rows => 15 %>
+	    </div>
+	 </div>	
+  </fieldset>
+
+
+  <fieldset>
+    <legend>Additional information</legend>
+    <div>
+
+    </div>
+  </fieldset>
+
+ <fieldset>
+    <legend>Publishing details</legend>
+     <div class="formSection">
+       <ul class="licensor" id="licensor"> 
+          <%= render(:partial => "_includes/publishing",:collection => @publishings) %>            
+       </ul>
+       <% unless @new == 1 %>
+          <%= link_to_function 'Add publication',:class => 'add' do |page| 
+          page.insert_html :bottom, :licensor, :partial => '_includes/publishing', :object =>Publishing.new
+          end %>
+        <% end %>
+      </div>
+  </fieldset>
+  <div class="actions">
+    <%= f.submit "Create" %>
+  </div>
+  </fieldset>
+<% end %>
+

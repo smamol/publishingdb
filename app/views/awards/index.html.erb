@@ -1,0 +1,18 @@
+<h1>Manage Awards </h1>
+<%= render(:partial => "_includes/notice") %>
+<%= link_to 'Create a new award ', new_award_path, :class => 'createNew' %>
+<%= render(:partial => "_includes/navadmin") %>
+<table cellspacing="0" cellpadding="0" summary="List of awards. ">
+ <tr>
+    <th>Name</th>
+    <th>Actions</th>
+  </tr>
+
+  <% for award in @awards  %>
+    <tr>
+      <td><%=h award.name %></td>
+      <td  class="actions"><%= link_to 'Edit', edit_award_path(award) %>
+      <%= link_to 'Delete', award , :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %> 
+</table>

@@ -1,0 +1,39 @@
+<li<%  unless publishing.new_record? %> class="exisiting" <% else%> class="new"<% end %>>
+   
+    <%  unless publishing.publication_id.blank? %>
+      <a href="#" class="show">
+      <%=h publishing.publication.name %>
+       </a>
+    <% else %>
+      <%= link_to_function 'Hide new publication','toggleNewRow(this)',:class=>'hide'  %>
+    <% end %>
+    <%  if publishing.new_record? %>
+      <%= link_to_function 'Remove publication','removeNewRow(this)',:class=>'remove'  %>
+    <% else %>
+      <a href="#" class="destroy">Remove publication</a>
+    <% end %>
+                      
+    <div class="formSection licensorSourcingDetail">
+        <% fields_for 'person[publishing_attributes][]', publishing do |c| %>
+            <% if publishing.new_record? %>
+            <div>
+                <%= c.label :publication_id, 'Publication'%>
+                <%= c.collection_select(:publication_id , @publications, :id, :name, :include_blank => true, :index => nil) %>
+			</div>
+            <% end %>
+           
+       
+          <% unless publishing.new_record? %>
+            <%= c.hidden_field :publication_id, :index=>nil %>
+            <%= c.hidden_field :id, :index=>nil %>
+            <%= c.hidden_field :should_destroy, :index=>nil, :class=>'destroy', :value=>'0' %>
+          <% end %>
+        
+        <% end %>
+                                    
+    </div>
+
+</li>
+
+
+

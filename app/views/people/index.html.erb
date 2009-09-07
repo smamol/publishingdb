@@ -1,0 +1,63 @@
+<h1>People Dashboard</h1>
+
+<%= render(:partial => "_includes/notice") %>
+
+<div class="find">
+  <%= render(:partial => "_includes/search", :locals => { :label_text => 'Enter first or last name' }) %>
+
+
+  <% form_tag({:action => 'filter_people_by_occupation'}, :method => :get, :class=>'filterTriple') do %>
+   <div>
+     <%= label_tag('occupation', 'Occupation') %>
+     <%= select_tag('occupation',"<option>All</option>" + options_from_collection_for_select(@occupations, 'id', 'name')) %>
+   </div>
+  
+   <%= submit_tag('Filter') %>
+  <% end %>
+</div>
+
+<a href="<%= url_for(:action=>'new', :controller => 'people') %>" class="createNew">
+  <span>Create new person</span>
+</a>
+
+<% if @people.blank? %>
+  <div class="noresults">Sorry no people were found.</div>
+<% else %>
+ <% if !@records_found.blank? %>
+    <div class="recordsfound"><strong>Records found: <%=h @records_found %></strong></div>
+ <% end %>
+
+ <table cellspacing="0" cellpadding="0" summary="List of people. ">
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+	  <th>Mobile</th>
+      <th>Phone/skype</th>	
+	  <th>Actions</th>
+    </tr>
+  
+    <% for person in @people %>
+      <tr>
+	    <td><%= link_to person.first_name_and_last_name, person  %></td>
+        <td><%=h person.email unless person.email.blank? %></td>
+        <td><%=h person.mobile unless person.mobile.blank? %></td> 
+		<td><%=h person.phone_or_skype unless person.phone_or_skype.blank? %></td>       
+		<td class="actions">
+          <%= link_to 'Edit', edit_person_path(person) %>
+          <%= link_to 'Delete', person, :confirm => 'Are you sure?', :method => :delete %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+
+<%= will_paginate(@people, :class => 'pagination') %>
+
+
+
+
+
+
+
+
+ 

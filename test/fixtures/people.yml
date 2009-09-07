@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 1
+  first_name: Sandy
+  last_name: Mamoli
+  email: sandy.mamoli@gmail.com
+  mobile: 021 514 892
+  phone_or_skype: smamol
+  website: http://www.nomad8.com
+  notes: Some very interesting notes!
+
+two:
+  id: 2
+  first_name: Julie
+  last_name: Starr
+  email: starrjulie@gmail.com
+  website: http://www.evolvingnewsroom.co.nz
+

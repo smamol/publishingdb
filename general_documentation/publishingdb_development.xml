@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Db flnm="publishingdb_development" nm="publishingdb_development" ver="1.3.4">
+  <VerLbl/>
+  <VerNotes/>
+  <DefTblOpts/>
+  <DocFolder>/Users/smamol/code/publishingdb/general_documentation</DocFolder>
+  <Sch Cm="standard public schema" nm="public">
+    <Tbl UsSo="1" nm="awards">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="awards_pkey"/>
+      <Cl au="1" df="nextval('awards_id_seq'::regclass)" nm="id" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="name" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="255" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="created_at" nu="1">
+        <DT ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="updated_at" nu="1">
+        <DT ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Idx clu="0" nm="index_awards_on_name" unq="1">
+        <ClNs>name</ClNs>
+      </Idx>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="awards_people">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Cl au="0" df="" nm="award_id" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="person_id" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_awards_people_award_id" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="awards" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="awards_people" oe="1" sch="public" zr="1"/>
+        <ClPr cdCl="award_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_awards_people_person_id" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="people" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="awards_people" oe="1" sch="public" zr="1"/>
+        <ClPr cdCl="person_id" prCl="id"/>
+      </Fk>
+      <Idx clu="0" nm="index_awards_people_on_award_id_and_person_id" unq="1">
+        <ClNs>award_id, person_id</ClNs>
+      </Idx>
+      <Idx clu="0" nm="index_awards_people_on_person_id" unq="0">
+        <ClNs>person_id</ClNs>
+      </Idx>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="occupations">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="occupations_pkey"/>
+      <Cl au="1" df="nextval('occupations_id_seq'::regclass)" nm="id" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="name" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="255" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="created_at" nu="1">
+        <DT ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="updated_at" nu="1">
+        <DT ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Idx clu="0" nm="index_occupations_on_name" unq="1">
+        <ClNs>name</ClNs>
+      </Idx>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="people">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="people_pkey"/>
+      <Cl au="1" df="nextval('people_id_seq'::regclass)" nm="id" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="first_name" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="255" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="last_name" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="255" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="email" nu="1">
+        <DT ds="VarChar" en="" id="12" ln="255" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="mobile" nu="1">
+        <DT ds="VarChar" en="" id="12" ln="255" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="phone_or_skype" nu="1">
+        <DT ds="VarChar" en="" id="12" ln="255" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="website" nu="1">
+        <DT ds="VarChar" en="" id="12" ln="255" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="notes" nu="1">
+        <DT ds="Text" en="" id="703" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="created_at" nu="1">
+        <DT ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="updated_at" nu="1">
+        <DT ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="occupation_id" nu="1">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_people_occupations_occupation_id" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="occupations" oe="1" sch="public" zr="1"/>
+        <CdTb mn="1" nm="people" oe="1" sch="public" zr="1"/>
+        <ClPr cdCl="occupation_id" prCl="id"/>
+      </Fk>
+      <Idx clu="0" nm="index_people_on_first_name_and_last_name" unq="1">
+        <ClNs>first_name, last_name</ClNs>
+      </Idx>
+      <Idx clu="0" nm="index_people_on_id_and_occupation_id" unq="1">
+        <ClNs>id, occupation_id</ClNs>
+      </Idx>
+      <Idx clu="0" nm="index_people_on_last_name_and_first_name" unq="1">
+        <ClNs>last_name, first_name</ClNs>
+      </Idx>
+      <Idx clu="0" nm="index_people_on_occupation_id" unq="0">
+        <ClNs>occupation_id</ClNs>
+      </Idx>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="people_publications">
+      <TblOpts/>
+      <Pk ClNs="person_id, publication_id" nm="pkpeople_publications"/>
+      <Cl au="0" df="" nm="person_id" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="publication_id" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_people_publications_people" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="people" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="people_publications" oe="1" sch="public" zr="1"/>
+        <ClPr cdCl="person_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_people_publications_publications" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="publications" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="people_publications" oe="1" sch="public" zr="1"/>
+        <ClPr cdCl="publication_id" prCl="id"/>
+      </Fk>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="people_specialties">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Cl au="0" df="" nm="specialty_id" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="person_id" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_people_specialties_person_id" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="people" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="people_specialties" oe="1" sch="public" zr="1"/>
+        <ClPr cdCl="person_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_people_specialties_specialty_id" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="specialties" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="people_specialties" oe="1" sch="public" zr="1"/>
+        <ClPr cdCl="specialty_id" prCl="id"/>
+      </Fk>
+      <Idx clu="0" nm="index_people_specialties_on_person_id" unq="0">
+        <ClNs>person_id</ClNs>
+      </Idx>
+      <Idx clu="0" nm="index_people_specialties_on_specialty_id_and_person_id" unq="1">
+        <ClNs>specialty_id, person_id</ClNs>
+      </Idx>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="publications">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkpublications"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="name" nu="0">
+        <DT ds="Char" en="" id="1" ln="100" sc="null" sg="1"/>
+      </Cl>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="schema_migrations">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Cl au="0" df="" nm="version" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="255" sc="null" sg="1"/>
+      </Cl>
+      <Idx clu="0" nm="unique_schema_migrations" unq="1">
+        <ClNs>version</ClNs>
+      </Idx>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="specialties">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="specialties_pkey"/>
+      <Cl au="1" df="nextval('specialties_id_seq'::regclass)" nm="id" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="name" nu="0">
+        <DT ds="VarChar" en="" id="12" ln="255" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="created_at" nu="1">
+        <DT ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="updated_at" nu="1">
+        <DT ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Idx clu="0" nm="index_specialties_on_name" unq="1">
+        <ClNs>name</ClNs>
+      </Idx>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="users">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="users_pkey"/>
+      <Cl au="1" df="nextval('users_id_seq'::regclass)" nm="id" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="login" nu="1">
+        <DT ds="VarChar" en="" id="12" ln="40" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="name" nu="1">
+        <DT ds="VarChar" en="" id="12" ln="100" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="email" nu="1">
+        <DT ds="VarChar" en="" id="12" ln="100" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="crypted_password" nu="1">
+        <DT ds="VarChar" en="" id="12" ln="40" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="salt" nu="1">
+        <DT ds="VarChar" en="" id="12" ln="40" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="created_at" nu="1">
+        <DT ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="updated_at" nu="1">
+        <DT ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="remember_token" nu="1">
+        <DT ds="VarChar" en="" id="12" ln="40" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="remember_token_expires_at" nu="1">
+        <DT ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Idx clu="0" nm="index_users_on_login" unq="1">
+        <ClNs>login</ClNs>
+      </Idx>
+      <SchTrHis/>
+    </Tbl>
+    <Seq incr="1" nm="awards_id_seq"/>
+    <Seq incr="1" nm="occupations_id_seq"/>
+    <Seq incr="1" nm="people_id_seq"/>
+    <Seq incr="1" nm="specialties_id_seq"/>
+    <Seq incr="1" nm="users_id_seq"/>
+  </Sch>
+  <Dgm nm="diagramA">
+    <RnCf FtSz="9" lkStgy="OffsetDirect" zm="1.0">
+      <VbCfg>
+        <Fg ky="Auto Number" vl="0"/>
+        <Fg ky="Check" vl="0"/>
+        <Fg ky="Comment" vl="0"/>
+        <Fg ky="Data Type" vl="1"/>
+        <Fg ky="Default" vl="0"/>
+        <Fg ky="ENUM Values" vl="0"/>
+        <Fg ky="Length" vl="1"/>
+        <Fg ky="Name" vl="1"/>
+        <Fg ky="Nullable" vl="0"/>
+        <Fg ky="Schema Name" vl="0"/>
+        <Fg ky="Signed" vl="0"/>
+      </VbCfg>
+    </RnCf>
+    <TbGl bkCl="ffffffe6" sch="public" tbl="awards" x="713" y="110"/>
+    <TbGl bkCl="ffffffe6" sch="public" tbl="awards_people" x="493" y="132"/>
+    <TbGl bkCl="ffffffe6" sch="public" tbl="occupations" x="266" y="10"/>
+    <TbGl bkCl="ffffffe6" sch="public" tbl="people" x="259" y="144"/>
+    <TbGl bkCl="ffffffe6" sch="public" tbl="people_specialties" x="498" y="218"/>
+    <TbGl bkCl="ffffffe6" sch="public" tbl="schema_migrations" x="1004" y="50"/>
+    <TbGl bkCl="ffffffe6" sch="public" tbl="specialties" x="709" y="197"/>
+    <TbGl bkCl="ffffffe6" sch="public" tbl="users" x="1190" y="50"/>
+    <TbGl bkCl="ffffffe6" sch="public" tbl="publications" x="288" y="419"/>
+    <TbGl bkCl="ffffffe6" sch="public" tbl="people_publications" x="278" y="326"/>
+    <FkGl bkCl="ff000000" nm="public.awards_people.fk_awards_people_award_id"/>
+    <FkGl bkCl="ff000000" nm="public.awards_people.fk_awards_people_person_id"/>
+    <FkGl bkCl="ff000000" nm="public.people.fk_people_occupations_occupation_id"/>
+    <FkGl bkCl="ff000000" nm="public.people_publications.fk_people_publications_people"/>
+    <FkGl bkCl="ff000000" nm="public.people_publications.fk_people_publications_publications"/>
+    <FkGl bkCl="ff000000" nm="public.people_specialties.fk_people_specialties_person_id"/>
+    <FkGl bkCl="ff000000" nm="public.people_specialties.fk_people_specialties_specialty_id"/>
+  </Dgm>
+  <RnmMgr NxRnmId="4">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="people_publications" SupCls="Schema" SupNme="public">
+      <Rnm id="2" nNm="person_id" oNm="person)id"/>
+      <Rnm id="1" nNm="person)id" oNm="id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="people_publications" SupCls="Schema" SupNme="public">
+      <Rnm id="3" nNm="publication_id" oNm="name"/>
+    </RnmCh>
+  </RnmMgr>
+  <DbDocOptionMgr>
+    <BasicOptionMgr>
+      <Name>db.doc.option.mgr</Name>
+      <BoolOpt lbl="Diagrams" nm="doc.diagrams" on="1" spl="0"/>
+      <BoolOpt lbl="Foreign Keys" nm="doc.fks" on="1" spl="0"/>
+      <BoolOpt lbl="Indexes" nm="doc.indexes" on="1" spl="0"/>
+      <BoolOpt lbl="Overwrite CSS File" nm="doc.overwrite.css" on="1" spl="0"/>
+      <BoolOpt lbl="Procedures" nm="doc.procs" on="1" spl="0"/>
+      <BoolOpt lbl="Schemas" nm="doc.schemas" on="1" spl="0"/>
+      <BoolOpt lbl="Sequences" nm="doc.sequences" on="1" spl="0"/>
+      <BoolOpt lbl="Tables" nm="doc.tables" on="1" spl="0"/>
+      <BoolOpt lbl="Triggers" nm="doc.triggers" on="1" spl="0"/>
+      <BoolOpt lbl="Views" nm="doc.views" on="1" spl="0"/>
+    </BasicOptionMgr>
+  </DbDocOptionMgr>
+</Db>

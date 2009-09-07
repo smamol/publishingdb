@@ -1,0 +1,46 @@
+<h1>Publications Dashboard</h1>
+
+<%= render(:partial => "_includes/notice") %>
+
+<div class="find">
+  <%= render(:partial => "_includes/search", :locals => { :label_text => 'Enter publication name' }) %>
+</div>
+
+<a href="<%= url_for(:action=>'new', :controller => 'publications') %>" class="createNew">
+  <span>Create new publication</span>
+</a>
+
+<% if @publications.blank? %>
+  <div class="noresults">Sorry no publications were found.</div>
+<% else %>
+ <% if !@records_found.blank? %>
+    <div class="recordsfound"><strong>Records found: <%=h @records_found %></strong></div>
+ <% end %>
+
+ <table cellspacing="0" cellpadding="0" summary="List of people. ">
+    <tr>
+      <th>Name</th>	
+	  <th>Actions</th>
+    </tr>
+  
+    <% for publication in @publications %>
+      <tr>
+        <td><%=h publication.name unless publication.name.blank? %></td> 
+		<td class="actions">
+          <%= link_to 'Edit', edit_publication_path(publication) %>
+          <%= link_to 'Delete', publication, :confirm => 'Are you sure?', :method => :delete %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+
+<%= will_paginate(@publications, :class => 'pagination') %>
+
+
+
+
+
+
+
+

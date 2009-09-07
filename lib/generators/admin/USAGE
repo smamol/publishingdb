@@ -1,0 +1,6 @@
+Usage:
+
+script/generate admin <Model Name>
+
+example:
+script/generate admin <Award>

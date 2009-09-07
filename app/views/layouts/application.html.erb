@@ -1,0 +1,10 @@
+<%= render(:partial => "_includes/head") rescue nil %>
+<body class="<%= @bodyClass %>">
+  <div id="wrapSite">
+    <%= render(:partial => "_includes/header") rescue nil %>
+    <div id="content">
+      <%= yield  %>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,10 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+ one:
+   name: Author
+
+ two:
+   name: Graphic Artist
+
+ three:
+   name: Photographer
