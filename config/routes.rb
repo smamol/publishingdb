@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :sessions
+
   map.resources :publications, :collection => { :search => :get }
 
   map.resources :occupations
@@ -11,13 +13,12 @@ ActionController::Routing::Routes.draw do |map|
                                           :filter_people_by_occupation => :get
                                         }
 
-  map.logout '/logout', :controller => 'sessions', :action => 'destroy'
-  map.login '/login', :controller => 'sessions', :action => 'new'
-  map.register '/register', :controller => 'users', :action => 'create'
-  map.signup '/signup', :controller => 'users', :action => 'new'
-  map.resources :users
+  map.login  '/login',  :controller => 'sessions', :action => 'new'
 
-  map.resource :session
+  map.logout '/logout', :controller => 'sessions', :action => 'destroy', :method => :delete
+
+  map.resources :sessions
+ 
   
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
   map.root :controller => "people"
