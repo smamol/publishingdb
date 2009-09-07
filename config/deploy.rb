@@ -1,7 +1,9 @@
 set :application, "publishingdb"
 set :domain, "68.233.8.201"
 set :user, "sandyte"
-set :repository,  "svn+ssh://#{user}@#{domain}/home/#{user}/svn/#{application}/trunk"
+set :scm, "git"
+set :repository,  "git://github.com/smamol/publishingdb.git"
+set :branch, 'master'
 set :use_sudo, false
 set :group_writable, false
 set :deploy_to, "/home/#{user}/apps/#{application}"

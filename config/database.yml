@@ -20,6 +20,6 @@ test:
 production:
   adapter: postgresql
   database: sandyte_publishingdb
-  username: publishingdb
+  username: sandyte_publishingdb
   password: smamol1
   host: 127.0.0.1
