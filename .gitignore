@@ -4,3 +4,5 @@ tmp/**/*
 config/database.yml
 db/*.sqlite3
 .svn
+config/database.yml
+config/deploy.rb
