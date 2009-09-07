@@ -17,9 +17,3 @@ test:
   password: postgres 
   host: localhost
 
-production:
-  adapter: postgresql
-  database: sandyte_publishingdb
-  username: sandyte_publishingdb
-  password: smamol1
-  host: 127.0.0.1

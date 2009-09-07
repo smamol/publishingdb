@@ -14,7 +14,7 @@ load 'config/deploy'
    end
  
    task :restart, :roles => :app do
-     run "cd #{current_path} && mongrel_rails restart"
+     run "cd /home/sandyte/script && sh restart-mon.sh"
    end
  
  end
