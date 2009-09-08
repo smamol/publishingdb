@@ -21,7 +21,7 @@ class Person < ActiveRecord::Base
   end
   
   def self.search_people_by_name(searchstring)
-    self.search searchstring 
+    self.search (searchstring, :order => "people.last_name" )
   end 
   
   def self.filter_person_by_occupation_publishings(occupation_id, publication_id) 
