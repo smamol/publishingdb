@@ -1,0 +1,18 @@
+<h1>Manage Roles </h1>
+<%= render(:partial => "_includes/notice") %>
+<%= link_to 'Create a new role ', new_publishingrole_path, :class => 'createNew' %>
+<%= render(:partial => "_includes/navadmin") %>
+<table cellspacing="0" cellpadding="0" summary="List of publishingroles. ">
+ <tr>
+    <th>Name</th>
+    <th>Actions</th>
+  </tr>
+
+  <% for publishingrole in @publishingroles  %>
+    <tr>
+      <td><%=h publishingrole.name %></td>
+      <td  class="actions"><%= link_to 'Edit', edit_publishingrole_path(publishingrole) %>
+      <%= link_to 'Delete', publishingrole , :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %> 
+</table>
