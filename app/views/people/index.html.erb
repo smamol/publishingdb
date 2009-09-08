@@ -6,12 +6,15 @@
   <%= render(:partial => "_includes/search", :locals => { :label_text => 'Enter first or last name' }) %>
 
 
-  <% form_tag({:action => 'filter_people_by_occupation'}, :method => :get, :class=>'filterTriple') do %>
+  <% form_tag({:action => 'filter_people_by_occupation_publishings'}, :method => :get, :class=>'filterTriple') do %>
    <div>
      <%= label_tag('occupation', 'Occupation') %>
      <%= select_tag('occupation',"<option>All</option>" + options_from_collection_for_select(@occupations, 'id', 'name')) %>
    </div>
-  
+   <div class="last">
+     <%= label_tag('publication', 'Publications') %>
+     <%= select_tag('publication',"<option>All</option>" + options_from_collection_for_select(@publications, 'id', 'name')) %>
+   </div>
    <%= submit_tag('Filter') %>
   <% end %>
 </div>

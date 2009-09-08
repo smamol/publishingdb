@@ -24,14 +24,15 @@ class Person < ActiveRecord::Base
     self.search searchstring 
   end 
   
-  def self.filter_person_by_occupation(occupation_id) 
+  def self.filter_person_by_occupation_publishings(occupation_id, publication_id) 
      scope = Person.scoped({:order => :last_name, :include => [:occupation, :awards]})
      scope = scope.scoped :conditions => [ "occupation_id = ?", occupation_id] unless occupation_id == 'All'
-    # scope = scope.scoped :conditions => [ "priority_id = ?", priority_id] unless priority_id == 'All'
-    # scope = scope.scoped :conditions => [ "rights_status_id = ?", rights_status_id] unless rights_status_id == 'All'
+     scope = scope.scoped :joins => :publishings, :conditions => [ "publication_id = ?", publication_id] unless publication_id == 'All'     
      scope
    end
    
+  
+  
   
   def publishing_attributes=(publishing_attributes)
     publishing_attributes.each do |attributes|

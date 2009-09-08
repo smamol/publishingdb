@@ -6,6 +6,7 @@ class PeopleController < ApplicationController
   def index
     @people = Person.all(:order => :last_name).paginate(:per_page => PER_PAGE,:page => params[:page])
     @occupations = Occupation.all(:order => :name)
+    @publications = Publication.all(:order => :name)
     
     respond_to do |format|
       format.html # index.html.erb
@@ -105,6 +106,7 @@ class PeopleController < ApplicationController
     @records_found = @people.size 
     @people = @people.paginate(:per_page => PER_PAGE,:page => params[:page])  
     @occupations = Occupation.all(:order => :name)
+    @publications = Publication.all(:order => :name)
     
     respond_to do |format|
       format.html { render :action => "index" }# index.html.erb
@@ -112,11 +114,12 @@ class PeopleController < ApplicationController
     end
   end
   
-  def filter_people_by_occupation
-     @people = Person.filter_person_by_occupation(params[:occupation])
+  def filter_people_by_occupation_publishings
+     @people = Person.filter_person_by_occupation_publishings(params[:occupation], params[:publication])
      @records_found = @people.size 
      @people = @people.paginate(:per_page => PER_PAGE,:page => params[:page])
      @occupations = Occupation.all(:order => :name)
+     @publications = Publication.all(:order => :name)
 
      respond_to do |format|
        format.html { render :action => "index" }# index.html.erb

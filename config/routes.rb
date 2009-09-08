@@ -10,7 +10,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :awards
   
   map.resources :people, :collection => { :search => :get, 
-                                          :filter_people_by_occupation => :get
+                                          :filter_people_by_occupation_publishings => :get
                                         }
 
   map.login  '/login',  :controller => 'sessions', :action => 'new'
