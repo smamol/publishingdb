@@ -126,27 +126,6 @@
       </Idx>
       <SchTrHis/>
     </Tbl>
-    <Tbl UsSo="1" nm="people_publications">
-      <TblOpts/>
-      <Pk ClNs="person_id, publication_id" nm="pkpeople_publications"/>
-      <Cl au="0" df="" nm="person_id" nu="0">
-        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
-      </Cl>
-      <Cl au="0" df="" nm="publication_id" nu="0">
-        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
-      </Cl>
-      <Fk deAc="3" nm="fk_people_publications_people" prLkCl="id" upAc="3">
-        <PrTb mn="0" nm="people" oe="1" sch="public" zr="0"/>
-        <CdTb mn="1" nm="people_publications" oe="1" sch="public" zr="1"/>
-        <ClPr cdCl="person_id" prCl="id"/>
-      </Fk>
-      <Fk deAc="3" nm="fk_people_publications_publications" prLkCl="id" upAc="3">
-        <PrTb mn="0" nm="publications" oe="1" sch="public" zr="0"/>
-        <CdTb mn="1" nm="people_publications" oe="1" sch="public" zr="1"/>
-        <ClPr cdCl="publication_id" prCl="id"/>
-      </Fk>
-      <SchTrHis/>
-    </Tbl>
     <Tbl UsSo="1" nm="people_specialties">
       <TblOpts>WITHOUT OIDS</TblOpts>
       <Cl au="0" df="" nm="specialty_id" nu="0">
@@ -182,6 +161,46 @@
       <Cl au="0" df="" nm="name" nu="0">
         <DT ds="Char" en="" id="1" ln="100" sc="null" sg="1"/>
       </Cl>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="publishingroles">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkpublishingroles"/>
+      <Cl au="0" df="" nm="id" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="name" nu="0">
+        <DT ds="Char" en="" id="1" ln="100" sc="null" sg="1"/>
+      </Cl>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="publishings">
+      <TblOpts/>
+      <Pk ClNs="person_id, publication_id" nm="pkpublishings"/>
+      <Cl au="0" df="" nm="person_id" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="publication_id" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Cl au="0" df="" nm="publishingrole_id" nu="0">
+        <DT ds="Integer" en="" id="4" ln="null" sc="null" sg="1"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_people_publications_people" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="people" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="publishings" oe="1" sch="public" zr="1"/>
+        <ClPr cdCl="person_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_people_publications_publications" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="publications" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="publishings" oe="1" sch="public" zr="1"/>
+        <ClPr cdCl="publication_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="3" nm="fk_publishings_publishingroles" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="publishingroles" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="publishings" oe="1" sch="public" zr="1"/>
+        <ClPr cdCl="publishingrole_id" prCl="id"/>
+      </Fk>
       <SchTrHis/>
     </Tbl>
     <Tbl UsSo="1" nm="schema_migrations">
@@ -283,22 +302,30 @@
     <TbGl bkCl="ffffffe6" sch="public" tbl="specialties" x="709" y="197"/>
     <TbGl bkCl="ffffffe6" sch="public" tbl="users" x="1190" y="50"/>
     <TbGl bkCl="ffffffe6" sch="public" tbl="publications" x="288" y="419"/>
-    <TbGl bkCl="ffffffe6" sch="public" tbl="people_publications" x="278" y="326"/>
+    <TbGl bkCl="ffffffe6" sch="public" tbl="publishings" x="278" y="326"/>
+    <TbGl bkCl="ffffffe6" sch="public" tbl="publishingroles" x="98" y="329"/>
     <FkGl bkCl="ff000000" nm="public.awards_people.fk_awards_people_award_id"/>
     <FkGl bkCl="ff000000" nm="public.awards_people.fk_awards_people_person_id"/>
     <FkGl bkCl="ff000000" nm="public.people.fk_people_occupations_occupation_id"/>
-    <FkGl bkCl="ff000000" nm="public.people_publications.fk_people_publications_people"/>
-    <FkGl bkCl="ff000000" nm="public.people_publications.fk_people_publications_publications"/>
     <FkGl bkCl="ff000000" nm="public.people_specialties.fk_people_specialties_person_id"/>
     <FkGl bkCl="ff000000" nm="public.people_specialties.fk_people_specialties_specialty_id"/>
+    <FkGl bkCl="ff000000" nm="public.publishings.fk_people_publications_people"/>
+    <FkGl bkCl="ff000000" nm="public.publishings.fk_people_publications_publications"/>
+    <FkGl bkCl="ff000000" nm="public.publishings.fk_publishings_publishingroles"/>
   </Dgm>
-  <RnmMgr NxRnmId="4">
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="people_publications" SupCls="Schema" SupNme="public">
+  <RnmMgr NxRnmId="6">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="publishings" SupCls="Schema" SupNme="public">
       <Rnm id="2" nNm="person_id" oNm="person)id"/>
       <Rnm id="1" nNm="person)id" oNm="id"/>
     </RnmCh>
-    <RnmCh ObjCls="Column" ParCls="Table" ParNme="people_publications" SupCls="Schema" SupNme="public">
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="publishings" SupCls="Schema" SupNme="public">
       <Rnm id="3" nNm="publication_id" oNm="name"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="4" nNm="publishings" oNm="people_publications"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="5" nNm="publishingroles" oNm="roles"/>
     </RnmCh>
   </RnmMgr>
   <DbDocOptionMgr>
