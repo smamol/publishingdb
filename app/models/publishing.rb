@@ -6,6 +6,7 @@ class Publishing < ActiveRecord::Base
   
   belongs_to :person
   belongs_to :publication
+  belongs_to :publishingrole
   
   attr_accessor :should_destroy
     

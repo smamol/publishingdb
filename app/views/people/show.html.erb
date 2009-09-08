@@ -40,7 +40,10 @@
   <% for publishing in @person.publishings %>
     <li>
       <% unless publishing.publication.nil? %><a href="#" class="show"><%=h publishing.publication.name %></a><%end %>
-      <ul class="licensorSourcingDetails">     
+     <ul class="licensorSourcingDetails">
+        <li><strong>Role:</strong> <% unless publishing.publishingrole_id.nil? %>
+			<%=h publishing.publishingrole.name %><% end %> 
+		</li>
       </ul>
     </li>
   <% end %>

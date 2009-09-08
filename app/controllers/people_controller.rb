@@ -33,6 +33,7 @@ class PeopleController < ApplicationController
     @occupations = Occupation.all(:order => :name)
     @publications = Publication.all(:order => :name)
     @publishings = @person.publishings
+    @publishingroles = Publishingrole.all(:order => :name)
     
     respond_to do |format|
       format.html # new.html.erb
@@ -46,6 +47,8 @@ class PeopleController < ApplicationController
     @occupations = Occupation.all(:order => :name)
     @publications = Publication.all(:order => :name)
     @publishings = @person.publishings
+    @publishingroles = Publishingrole.all(:order => :name)
+    
   end
 
   # POST /people
@@ -55,6 +58,8 @@ class PeopleController < ApplicationController
     @occupations = Occupation.all(:order => :name)
     @publications = Publication.all(:order => :name)
     @publishings = @person.publishings
+    @publishingroles = Publishingrole.all(:order => :name)
+    
     
     respond_to do |format|
       if @person.save
@@ -75,6 +80,7 @@ class PeopleController < ApplicationController
     @occupations = Occupation.all(:order => :name)
     @publications = Publication.all(:order => :name)
     @publishings = @person.publishings
+    @publishingroles = Publishingrole.all(:order => :name)
     
     respond_to do |format|
       if @person.update_attributes(params[:person])
@@ -107,6 +113,7 @@ class PeopleController < ApplicationController
     @people = @people.paginate(:per_page => PER_PAGE,:page => params[:page])  
     @occupations = Occupation.all(:order => :name)
     @publications = Publication.all(:order => :name)
+    @publishingroles = Publishingrole.all(:order => :name)
     
     respond_to do |format|
       format.html { render :action => "index" }# index.html.erb
@@ -120,6 +127,7 @@ class PeopleController < ApplicationController
      @people = @people.paginate(:per_page => PER_PAGE,:page => params[:page])
      @occupations = Occupation.all(:order => :name)
      @publications = Publication.all(:order => :name)
+     @publishingroles = Publishingrole.all(:order => :name)
 
      respond_to do |format|
        format.html { render :action => "index" }# index.html.erb

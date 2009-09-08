@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090907105020) do
+ActiveRecord::Schema.define(:version => 20090908043200) do
 
   create_table "awards", :force => true do |t|
     t.string   "name",       :null => false
@@ -69,15 +69,25 @@ ActiveRecord::Schema.define(:version => 20090907105020) do
 
   add_index "publications", ["name"], :name => "index_publications_on_name", :unique => true
 
-  create_table "publishings", :force => true do |t|
-    t.integer  "person_id",      :null => false
-    t.integer  "publication_id", :null => false
+  create_table "publishingroles", :force => true do |t|
+    t.string   "name",       :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "publishingroles", ["name"], :name => "index_publishingroles_on_name", :unique => true
+
+  create_table "publishings", :force => true do |t|
+    t.integer  "person_id",         :null => false
+    t.integer  "publication_id",    :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "publishingrole_id"
+  end
+
   add_index "publishings", ["person_id", "publication_id"], :name => "index_publishings_on_person_id_and_publication_id", :unique => true
   add_index "publishings", ["publication_id"], :name => "index_publishings_on_publication_id"
+  add_index "publishings", ["publishingrole_id"], :name => "index_publishings_on_publishingrole_id"
 
   create_table "specialties", :force => true do |t|
     t.string   "name",       :null => false
@@ -111,5 +121,6 @@ ActiveRecord::Schema.define(:version => 20090907105020) do
 
   add_foreign_key "publishings", ["publication_id"], "publications", ["id"], :name => "fk_publishings_publication_id"
   add_foreign_key "publishings", ["person_id"], "people", ["id"], :name => "fk_publishings_person_id"
+  add_foreign_key "publishings", ["publishingrole_id"], "publishingroles", ["id"], :name => "fk_publishings_publishingroles_publishingrole_id"
 
 end

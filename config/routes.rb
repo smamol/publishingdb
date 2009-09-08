@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :publishingroles
+
   map.resources :sessions
 
   map.resources :publications, :collection => { :search => :get }
