@@ -20,12 +20,12 @@
                 <%= c.label :publication_id, 'Publication'%>
                 <%= c.collection_select(:publication_id , @publications, :id, :name, :include_blank => true, :index => nil) %>
 			</div>
-			 <div>
+			 
+            <% end %>
+           	<div>
 	              <%= c.label :publishingrole_id %>
 	              <%= c.collection_select(:publishingrole_id , @publishingroles, :id, :name, {:prompt => 'Select one'}, :index => nil) %>
 	          </div>
-            <% end %>
-           
        
           <% unless publishing.new_record? %>
             <%= c.hidden_field :publication_id, :index=>nil %>
