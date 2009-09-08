@@ -36,6 +36,7 @@
       <th>Email</th>
 	  <th>Mobile</th>
       <th>Phone/skype</th>	
+      <th>Publications</th>
 	  <th>Actions</th>
     </tr>
   
@@ -44,7 +45,11 @@
 	    <td><%= link_to person.first_name_and_last_name, person  %></td>
         <td><%=h person.email unless person.email.blank? %></td>
         <td><%=h person.mobile unless person.mobile.blank? %></td> 
-		<td><%=h person.phone_or_skype unless person.phone_or_skype.blank? %></td>       
+		<td><%=h person.phone_or_skype unless person.phone_or_skype.blank? %></td>  
+		<td><% unless person.publishings.blank? %>
+              <%=h person.publications.first.name %> (<%= link_to person.publications.count, person_path(person)%>)
+            <%end%>
+		</td>     
 		<td class="actions">
           <%= link_to 'Edit', edit_person_path(person) %>
           <%= link_to 'Delete', person, :confirm => 'Are you sure?', :method => :delete %>
