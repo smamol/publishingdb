@@ -1,0 +1,12 @@
+/* This is a set of commands to run to get a copy of the production database to your local machine */
+
+1. scp sandyte@68.233.8.201/:~/posgres_dumps/*.* .
+
+2. in postgres run this from a command line to generate a drop all tables script: 
+
+     psql -U postgres -d publishingdb_development
+	   SELECT 'DROP TABLE ' || tablename || ' CASCADE;' FROM pg_tables WHERE tableowner != 'postgres' AND tablename NOT LIKE 'pg_%' AND tablename NOT LIKE 'sql_%';
+
+
+3. recreate db: 
+   psql publishingdb_development < infile
