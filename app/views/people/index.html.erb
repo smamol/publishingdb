@@ -47,7 +47,10 @@
         <td><%=h person.mobile unless person.mobile.blank? %></td> 
 		<td><%=h person.phone_or_skype unless person.phone_or_skype.blank? %></td>  
 		<td><% unless person.publishings.blank? %>
-              <%=h person.publications.first.name %> (<%= link_to person.publications.count, person_path(person)%>)
+              <%=h person.publications.first.name %> 
+			  <% if person.publications.count > 1 %>
+					(<%= link_to person.publications.count, person_path(person)%>)
+              <%end%>
             <%end%>
 		</td>     
 		<td class="actions">
