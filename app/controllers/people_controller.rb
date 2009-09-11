@@ -17,9 +17,9 @@ class PeopleController < ApplicationController
   # GET /people/1
   # GET /people/1.xml
   def show
-    @person = Person.find(params[:id])
+    @person = Person.find(params[:id], :include => [:specialties, :awards, :publications])
     @occupations = Occupation.all(:order => :name)
-    
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @person }
@@ -34,6 +34,7 @@ class PeopleController < ApplicationController
     @publications = Publication.all(:order => :name)
     @publishings = @person.publishings
     @publishingroles = Publishingrole.all(:order => :name)
+    @specialties = Specialty.all(:order => :name)
     
     respond_to do |format|
       format.html # new.html.erb
@@ -43,11 +44,12 @@ class PeopleController < ApplicationController
 
   # GET /people/1/edit
   def edit
-    @person = Person.find(params[:id])
+    @person = Person.find(params[:id], :include => [:specialties, :awards])
     @occupations = Occupation.all(:order => :name)
     @publications = Publication.all(:order => :name)
     @publishings = @person.publishings
     @publishingroles = Publishingrole.all(:order => :name)
+    @specialties = Specialty.all(:order => :name)
     
   end
 
@@ -59,7 +61,7 @@ class PeopleController < ApplicationController
     @publications = Publication.all(:order => :name)
     @publishings = @person.publishings
     @publishingroles = Publishingrole.all(:order => :name)
-    
+    @specialties = Specialty.all(:order => :name)
     
     respond_to do |format|
       if @person.save
@@ -76,11 +78,16 @@ class PeopleController < ApplicationController
   # PUT /people/1
   # PUT /people/1.xml
   def update
-    @person = Person.find(params[:id])
+    #Genres habtm: Unchecking all checkboxes should result in an update that removes all genres from a title. 
+    #This is not happening as no empty array is being sent. Problem and solution see railscast: habtm checkbox ->
+    # http://railscasts.com/ => Episode 17
+    params[:person][:specialty_ids] ||= []
+    @person = Person.find(params[:id], :include => [:specialties, :awards])
     @occupations = Occupation.all(:order => :name)
     @publications = Publication.all(:order => :name)
     @publishings = @person.publishings
     @publishingroles = Publishingrole.all(:order => :name)
+    @specialties = Specialty.all(:order => :name)
     
     respond_to do |format|
       if @person.update_attributes(params[:person])

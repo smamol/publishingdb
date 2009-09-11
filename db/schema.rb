@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090908043200) do
+ActiveRecord::Schema.define(:version => 20090911032818) do
 
   create_table "awards", :force => true do |t|
     t.string   "name",       :null => false
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(:version => 20090908043200) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "publishingrole_id"
+    t.string   "titles"
   end
 
   add_index "publishings", ["person_id", "publication_id"], :name => "index_publishings_on_person_id_and_publication_id", :unique => true

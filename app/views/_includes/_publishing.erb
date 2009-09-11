@@ -25,7 +25,11 @@
            	<div>
 	              <%= c.label :publishingrole_id %>
 	              <%= c.collection_select(:publishingrole_id , @publishingroles, :id, :name, {:prompt => 'Select one'}, :index => nil) %>
-	          </div>
+	        </div>
+			<div>
+	              <%= c.label :titles %>
+                  <%= c.text_field :titles, :index => nil %>	        
+            </div>
        
           <% unless publishing.new_record? %>
             <%= c.hidden_field :publication_id, :index=>nil %>

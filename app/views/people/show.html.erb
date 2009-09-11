@@ -22,6 +22,14 @@
     <strong> Website:</strong>
      <%=h @person.website unless @person.website.blank? %>
   </li>
+<li>
+    <strong>Specialties:</strong>
+    <ul>
+      <% @person.specialties.each do |s| %>			
+        <li><%= s.name %></li>
+      <% end %>
+    </ul>
+  </li>
   <li>
     <strong> Notes:</strong>
     <div class="text"><%=  simple_format(@person.notes) unless @person.notes.blank? %></div>
@@ -41,8 +49,11 @@
     <li>
       <% unless publishing.publication.nil? %><a href="#" class="show"><%=h publishing.publication.name %></a><%end %>
      <ul class="licensorSourcingDetails">
-        <li><strong>Role:</strong> <% unless publishing.publishingrole_id.nil? %>
+        <li><strong>Role:</strong> <% unless publishing.publishingrole_id.blank? %>
 			<%=h publishing.publishingrole.name %><% end %> 
+		</li>
+		<li><strong>Titles:</strong> <% unless publishing.titles.blank? %>
+			<%=h publishing.titles%><% end %> 
 		</li>
       </ul>
     </li>

@@ -6,6 +6,7 @@ class Person < ActiveRecord::Base
   has_many :publications, :through => :publishings, :uniq => true 
   has_many :publishings, :dependent => :delete_all  
   belongs_to :occupation
+  has_and_belongs_to_many :specialties
   
   validates_presence_of :last_name
   validates_uniqueness_of :last_name, :scope => [:first_name] 
@@ -21,11 +22,11 @@ class Person < ActiveRecord::Base
   end
   
   def self.search_people_by_name(searchstring)
-    self.search (searchstring, :order => "people.last_name" )
+    self.search(searchstring, :order => "people.last_name", :include => [:occupation, :awards, :specialties])
   end 
   
   def self.filter_person_by_occupation_publishings(occupation_id, publication_id) 
-     scope = Person.scoped({:order => :last_name, :include => [:occupation, :awards]})
+     scope = Person.scoped({:order => :last_name, :include => [:occupation, :awards, :specialties]})
      scope = scope.scoped :conditions => [ "occupation_id = ?", occupation_id] unless occupation_id == 'All'
      scope = scope.scoped :joins => :publishings, :conditions => [ "publication_id = ?", publication_id] unless publication_id == 'All'     
      scope

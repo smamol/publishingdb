@@ -9,7 +9,7 @@ class Publication < ActiveRecord::Base
   validates_uniqueness_of :name
   
   def self.search_publication_by_name(searchstring)
-    self.search (searchstring, :order => "publications.name" )
+    self.search(searchstring, :order => "publications.name" )
   end
   
 end

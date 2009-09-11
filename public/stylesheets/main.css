@@ -173,7 +173,10 @@ body.admin #header li.admin a:hover
     div.recordsfound{float:right; margin-bottom:15px;color:#123F4D; }   
         
     /* ---------- LISTS -------------------------*/
-	
+	/* specialties checkbox list */
+	ul.selectGenres {width:1000px;float:left;padding-bottom:15px;}
+	ul.selectGenres li {float:left;width:200px;}
+	#content ul.selectGenres label {font-weight:normal;}
  
 	/* ---------- TABLES -----------------*/
 	#content table {

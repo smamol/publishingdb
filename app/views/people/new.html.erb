@@ -43,12 +43,15 @@
 	 </div>	
   </fieldset>
 
-
   <fieldset>
-    <legend>Additional information</legend>
-    <div>
-
-    </div>
+	<legend>Specialties</legend>
+    <ul class="selectGenres">
+      <% @specialties.each do |s| %>
+        <li>
+          <label><%= check_box_tag("person[specialty_ids][]", s.id, @person.specialties.include?(s)) %>  <%= s.name %></label>
+        </li>
+      <% end %>
+    </ul>
   </fieldset>
 
  <fieldset>
